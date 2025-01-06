@@ -31,14 +31,14 @@ const initialValues: ILogin = {
 const LoginView = () => {
     const setToken = tokenStore((state) => state.setToken);
     const navigate = useNavigate();
-    
+
     const handleNavigateToRegister = () => {
         navigate('/register');
     };
 
     const loginMutation = useMutation({
         mutationFn: loginApi,
-        onSuccess: async (data:ILoginResponse) => {
+        onSuccess: async (data: ILoginResponse) => {
             setToken(data.token);
             navigate('/home')
         },
@@ -47,9 +47,9 @@ const LoginView = () => {
         }
     });
     return (
-        <div className="h-full w-full flex justify-center items-center">
-            <section className="dark:bg-gray-900">
-                <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 w-[800px]">
+        <div className="h-full w-full flex justify-center items-center px-4">
+            <section className="dark:bg-gray-900 w-full max-w-[500px]">
+                <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                     <Formik
                         initialValues={initialValues}
                         validationSchema={loginSchema}
