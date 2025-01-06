@@ -3,12 +3,14 @@ import RegisterView from "./modules/auth/views/RegisterView"
 import LoginView from "./modules/auth/views/LoginView"
 import HomeView from "./modules/home/views/HomeView"
 import { tokenStore } from "./modules/shared/store/AuthTokenStore"
+import { Toaster } from "sonner"
 function App() {
   const token = tokenStore((state) => state.token);
 
   return (
     <>
       <div className='h-screen w-full bg-slate-100'>
+      <Toaster position="top-right" />
         <Routes>
           <Route
             path="*"

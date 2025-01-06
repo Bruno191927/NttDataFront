@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { registerApi } from "../../shared/services/auth/AuthApi";
 import { useMutation } from "@tanstack/react-query";
 import { tokenStore } from "../../shared/store/AuthTokenStore";
+import { toast } from "sonner";
 const registerSchema = Yup.object().shape({
     email: Yup.string()
         .email("El correo debe tener un formato válido")
@@ -45,7 +46,7 @@ const RegisterView = () => {
             navigate('/home');
         },
         onError: async (error: IError) => {
-            console.log(error.response.data);
+            toast.error(error.response.data.message);
         }
     });
 
